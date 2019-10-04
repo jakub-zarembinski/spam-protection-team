@@ -1,3 +1,5 @@
+# Spam Protection Team
+
 This project is a response to the [Full-Stack Challenge](https://github.com/morkro/coding-challenge).
 
 The solution applies the RESTful architectural style.
@@ -10,13 +12,18 @@ Regarding the front-end there are two versions available:
 
 The React-based variant offers a significantly better UX (as it eliminates the symptoms of page reloading whenever an update is needed) but it creates a problem of [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) (because a React client needs to be hosted on its own server) and this is solved on the back-end by implementing a customized [Container Response Filter](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/src/ai/sygnet/spt/CORSFilter.java).
 
+#### Testing and building
+
 The solution has been tested on [Apache TomEE](https://tomee.apache.org/) application server (the Plus edition) due to its built-in support for JAX-RS.
 
 A basic unit test is available in the [Tester.java](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/test/ai/sygnet/spt/Tester.java) file.
 
 If you want to build the project from the source code - all dependencies are listed in the [POM file](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/pom.xml).
 
+#### Deployment
+
 Deployment from the pre-compiled binaries:
+
 * Download [Apache TomEE Plus](https://tomee.apache.org/download-ng.html) and start the server
 * Download the [WAR file](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/bin/SpamProtectionTeam.war) and copy it into TomEE's `webapps` folder
 * Navigate to http://localhost:8080/SpamProtectionTeam/
