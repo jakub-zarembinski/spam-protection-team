@@ -1,15 +1,15 @@
 # Spam Protection Team
 
-This project is a response to the [Full-Stack Challenge](https://github.com/morkro/coding-challenge). The solution applies the RESTful architectural style. The back-end is written in Java and it relies on the JAX-RS API implemented by [Eclipse Jersey](https://eclipse-ee4j.github.io/jersey/). Regarding the front-end there are two versions available:
+This project is a response to the [Full-Stack Challenge](https://github.com/morkro/coding-challenge). The solution applies the RESTful architectural style. The back-end is written in Java and it relies on the JAX-RS API implemented by [Eclipse Jersey](https://eclipse-ee4j.github.io/jersey/). The front-end is written in JavaScript and offers two alternative versions:
 
-* [a basic HTML / JavaScript client](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/WebContent/index.html)
-* [a web app utilizing the React framework](https://github.com/jakub-zarembinski/spam-protection-team/tree/master/ReactClient)
+* [basic HTML / JavaScript client](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/WebContent/index.html)
+* [React application](https://github.com/jakub-zarembinski/spam-protection-team/tree/master/ReactClient)
 
-The React-based variant offers a significantly better UX (as it eliminates the symptoms of page reloading whenever an update is needed) but it creates a problem of [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) (because a React client needs to be hosted on its own server) and this is solved on the back-end by implementing a customized [Container Response Filter](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/src/ai/sygnet/spt/CORSFilter.java).
+The React-based variant offers a significantly better UX (as it eliminates the symptoms of page reloading whenever an update is needed) but it creates a problem of [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS), as the React client needs to be hosted on its own NodeJS server. The CORS issue is solved on the back-end by utilizing a customized [Container Response Filter](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/src/ai/sygnet/spt/CORSFilter.java).
 
 #### Building from source
 
-If you want to build the project from the source code - all dependencies are listed in the [POM file](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/pom.xml).
+All dependencies are listed in the [POM file](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/pom.xml).
 
 #### Target server
 
