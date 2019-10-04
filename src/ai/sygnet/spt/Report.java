@@ -16,7 +16,7 @@ public class Report {
 	public static class Payload {
 		public String source;
 		public String reportType;
-		public Object message;
+		public String message;
 		public String reportId;
 		public String referenceResourceId;
 		public String referenceResourceType;
