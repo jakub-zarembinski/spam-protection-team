@@ -14,7 +14,7 @@ import org.glassfish.jersey.client.ClientConfig;
 
 public class Tester {
 
-	private static final String ENDPOINT = "http://localhost:8080/SpamProtectionTeam";
+	private static final String ENDPOINT = "http://localhost:8080/spam-protection-team";
 	private static final String REPORT_ID = "1070bcf3-26f6-488d-be9b-81042f509bb5";
 	private static final String NON_EXISTENT_REPORT_ID = "00000000000000000000000";
 

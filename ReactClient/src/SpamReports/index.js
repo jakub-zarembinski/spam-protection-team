@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const ENDPOINT = "http://localhost:8080/SpamProtectionTeam";
+const ENDPOINT = "http://localhost:8080/spam-protection-team";
 const STATE_OPEN = "OPEN";
 const STATE_BLOCKED = "BLOCKED";
 const STATE_RESOLVED = "RESOLVED";
@@ -82,7 +82,7 @@ class SpamReports extends Component {
         <h2><button onClick={() => this.reset()}>Reset</button></h2>
         <table border="1"><tbody>
           {reports.map(report =>
-            <tr key={report.id} bgcolor={report.state === STATE_BLOCKED ? "#EEE" : "#FFF"}>
+            <tr key={report.id} bgcolor={report.state === STATE_BLOCKED ? "#EEEEEE" : "#FFFFFF"}>
               <td width="300"><a href={ENDPOINT + "/reports/:" + report.id}>{report.id}</a></td>
               <td width="200">{report.payload.reportType}</td>
               <td width="200">{report.payload.message ? report.payload.message : ""}</td>

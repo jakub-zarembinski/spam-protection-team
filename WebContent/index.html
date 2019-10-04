@@ -20,7 +20,7 @@
 				list = JSON.parse(this.responseText)["elements"];
 				html = "<table border=\"1\"><tbody>";
 				for (item in list) {
-					html += "<tr bgcolor=\"" + (list[item].state == STATE_BLOCKED ? "#EEE" : "#FFF") + "\">";
+					html += "<tr bgcolor=\"" + (list[item].state == STATE_BLOCKED ? "#EEEEEE" : "#FFFFFF") + "\">";
 					html += "<td width=\"300\"><a href='" + ENDPOINT + "/reports/:" + list[item].id + "'>" + list[item].id + "</a></td>";
 					html += "<td width=\"200\">" + list[item].payload.reportType + "</td>";
 					html += "<td width=\"200\">" + (list[item].payload.message ? list[item].payload.message : "") + "</td>";

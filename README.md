@@ -25,13 +25,13 @@ If you want to build the project from the source code - all dependencies are lis
 Deployment from the pre-compiled binaries:
 
 * Download [Apache TomEE Plus](https://tomee.apache.org/download-ng.html) and start the server
-* Download the [WAR file](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/bin/SpamProtectionTeam.war) and copy it into TomEE's `webapps` folder
-* Navigate to http://localhost:8080/SpamProtectionTeam/
+* Download the [WAR file](https://github.com/jakub-zarembinski/spam-protection-team/blob/master/bin/spam-protection-team.war) and copy it into TomEE's `webapps` folder
+* Navigate to http://localhost:8080/spam-protection-team/
 
 Deployment of the React client:
 * Make sure the TomEE server is running and the WAR file is deployed (as described above)
 * `git clone git@github.com:jakub-zarembinski/spam-protection-team.git`
-* `cd SpamProtectionTeam/ReactClient`
+* `cd spam-protection-team/ReactClient`
 * `npm install`
 * `npm start`
 * Navigate to http://localhost:3000/
