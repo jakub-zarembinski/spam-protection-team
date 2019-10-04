@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h2>Spam Protection Team</h2>
+	<h2><button onClick="reset()">Reset</button></h2>
+	<div id="container"></div>
+	<script>
+		const ENDPOINT = location.href.substring(0, location.href.lastIndexOf("/"));
+		const STATE_OPEN = "OPEN";
+		const STATE_BLOCKED = "BLOCKED";
+		const STATE_RESOLVED = "RESOLVED";
+
+		var xhr, list, item, html;
+
+		xhr = new XMLHttpRequest();
+		xhr.open("GET", ENDPOINT + "/reports/?state=" + STATE_OPEN + "&state=" + STATE_BLOCKED, true);
+		xhr.setRequestHeader("Accept", "application/json");
+		xhr.onload = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				list = JSON.parse(this.responseText)["elements"];
+				html = "<table border=\"1\"><tbody>";
+				for (item in list) {
+					html += "<tr bgcolor=\"" + (list[item].state == STATE_BLOCKED ? "#EEE" : "#FFF") + "\">";
+					html += "<td width=\"300\"><a href='" + ENDPOINT + "/reports/:" + list[item].id + "'>" + list[item].id + "</a></td>";
+					html += "<td width=\"200\">" + list[item].payload.reportType + "</td>";
+					html += "<td width=\"200\">" + (list[item].payload.message ? list[item].payload.message : "") + "</td>";
+					html += "<td width=\"100\">" + list[item].state + "</td>";
+					html += "<td width=\"220\">" + list[item].created + "</td>";
+					html += "<td><button style=\"width:100px\" onClick=\"update('" + list[item].id + "', '" + STATE_BLOCKED + "')\">" + (list[item].state == STATE_BLOCKED ? "Unblock" : "Block") + "</button></td>";
+					html += "<td><button style=\"width:100px\" onClick=\"update('" + list[item].id + "', '" + STATE_RESOLVED + "')\">Resolve</button></td>";
+					html += "</tr>";
+				}
+				html += "</tbody></table>";
+				document.getElementById("container").innerHTML = html;
+			}
+		}
+		xhr.send();
+
+		function update(id, state) {
+			xhr.open("PUT", ENDPOINT + "/reports/:" + id, true);
+			xhr.setRequestHeader('Content-type', 'application/json');
+			xhr.onload = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					location.reload();
+				}
+			}
+			xhr.send(JSON.stringify({
+				"ticketState" : state
+			}));
+		}
+
+		function reset() {
+			xhr.open("PUT", ENDPOINT + "/reports", true);
+			xhr.setRequestHeader('Content-type', 'application/json');
+			xhr.onload = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					location.reload();
+				}
+			}
+			xhr.send(JSON.stringify({
+				"ticketState" : STATE_OPEN
+			}))
+		}
+	</script>
+</body>
+</html>
