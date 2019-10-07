@@ -11,7 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public enum ReportDAO {
 	instance;
 
-	private static final String SOURCE_URL = "https://raw.githubusercontent.com/morkro/coding-challenge/master/data/reports.json";
+	private static final String SOURCE_URL = 
+			"https://raw.githubusercontent.com/morkro/coding-challenge/master/data/reports.json";
 
 	private Map<String, Report> model = new HashMap<>();
 

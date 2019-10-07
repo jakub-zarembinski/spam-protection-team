@@ -18,7 +18,8 @@ import javax.ws.rs.ext.Provider;
 public class CORSFilter implements ContainerResponseFilter {
 
 	@Override
-	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
+	public void filter(ContainerRequestContext requestContext,
+			ContainerResponseContext responseContext) throws IOException {
 		String origin = requestContext.getHeaderString("Origin");
 		if (origin == null) {
 			return;

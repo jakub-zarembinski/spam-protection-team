@@ -30,7 +30,8 @@ public class Tester {
 			ReportResource.TicketState payload = new ReportResource.TicketState();
 			payload.ticketState = ReportResource.TicketEnum.OPEN.name();
 			Entity<ReportResource.TicketState> entity = Entity.entity(payload, MediaType.APPLICATION_XML);
-			Response response = service.path("/reports").request(MediaType.APPLICATION_XML).put(entity, Response.class);
+			Response response = service.path("/reports")
+					.request(MediaType.APPLICATION_XML).put(entity, Response.class);
 			System.out.println(response.getStatus());
 			assertEquals(200, response.getStatus());
 		}
@@ -39,7 +40,8 @@ public class Tester {
 			/*
 			 * Test report list size and make sure all are set to OPEN
 			 */
-			Response response = service.path("/reports").request(MediaType.APPLICATION_XML).get(Response.class);
+			Response response = service.path("/reports")
+					.request(MediaType.APPLICATION_XML).get(Response.class);
 			System.out.println(response.getStatus());
 			assertEquals(200, response.getStatus());
 			ReportResource.Reports reports = response.readEntity(ReportResource.Reports.class);
@@ -53,7 +55,8 @@ public class Tester {
 			/*
 			 * Make sure the selected report exists and is set to OPEN
 			 */
-			Response response = service.path("/reports/:" + REPORT_ID).request(MediaType.APPLICATION_XML).get(Response.class);
+			Response response = service.path("/reports/:" + REPORT_ID)
+					.request(MediaType.APPLICATION_XML).get(Response.class);
 			System.out.println(response.getStatus());
 			assertEquals(200, response.getStatus());
 			Report report = response.readEntity(Report.class);
@@ -70,7 +73,8 @@ public class Tester {
 			ReportResource.TicketState payload = new ReportResource.TicketState();
 			payload.ticketState = ReportResource.TicketEnum.BLOCKED.name();
 			Entity<ReportResource.TicketState> entity = Entity.entity(payload, MediaType.APPLICATION_XML);
-			Response response = service.path("/reports/:" + REPORT_ID).request(MediaType.APPLICATION_XML).put(entity, Response.class);
+			Response response = service.path("/reports/:" + REPORT_ID)
+					.request(MediaType.APPLICATION_XML).put(entity, Response.class);
 			System.out.println(response.getStatus());
 			assertEquals(200, response.getStatus());
 			Report report = response.readEntity(Report.class);
@@ -82,7 +86,8 @@ public class Tester {
 			/*
 			 * Make sure the selected report is set to BLOCKED
 			 */
-			Response response = service.path("/reports/:" + REPORT_ID).request(MediaType.APPLICATION_XML).get(Response.class);
+			Response response = service.path("/reports/:" + REPORT_ID)
+					.request(MediaType.APPLICATION_XML).get(Response.class);
 			System.out.println(response.getStatus());
 			assertEquals(200, response.getStatus());
 			Report report = response.readEntity(Report.class);
@@ -99,7 +104,8 @@ public class Tester {
 			ReportResource.TicketState payload = new ReportResource.TicketState();
 			payload.ticketState = ReportResource.TicketEnum.RESOLVED.name();
 			Entity<ReportResource.TicketState> entity = Entity.entity(payload, MediaType.APPLICATION_XML);
-			Response response = service.path("/reports/:" + REPORT_ID).request(MediaType.APPLICATION_XML).put(entity, Response.class);
+			Response response = service.path("/reports/:" + REPORT_ID)
+					.request(MediaType.APPLICATION_XML).put(entity, Response.class);
 			System.out.println(response.getStatus());
 			assertEquals(200, response.getStatus());
 			Report report = response.readEntity(Report.class);
@@ -111,7 +117,8 @@ public class Tester {
 			/*
 			 * Make sure the selected report is set to RESOLVED
 			 */
-			Response response = service.path("/reports/:" + REPORT_ID).request(MediaType.APPLICATION_XML).get(Response.class);
+			Response response = service.path("/reports/:" + REPORT_ID)
+					.request(MediaType.APPLICATION_XML).get(Response.class);
 			System.out.println(response.getStatus());
 			assertEquals(200, response.getStatus());
 			Report report = response.readEntity(Report.class);
@@ -151,7 +158,8 @@ public class Tester {
 			/*
 			 * Make sure an attempt to fetch a non-existent report fails with the correct error
 			 */
-			Response response = service.path("/reports/:" + NON_EXISTENT_REPORT_ID).request(MediaType.APPLICATION_XML).get(Response.class);
+			Response response = service.path("/reports/:" + NON_EXISTENT_REPORT_ID)
+					.request(MediaType.APPLICATION_XML).get(Response.class);
 			System.out.println(response.getStatus());
 			assertEquals(404, response.getStatus());
 		}
@@ -163,7 +171,8 @@ public class Tester {
 			ReportResource.TicketState payload = new ReportResource.TicketState();
 			payload.ticketState = ReportResource.TicketEnum.OPEN.name();
 			Entity<ReportResource.TicketState> entity = Entity.entity(payload, MediaType.APPLICATION_XML);
-			Response response = service.path("/reports/:" + NON_EXISTENT_REPORT_ID).request(MediaType.APPLICATION_XML).put(entity, Response.class);
+			Response response = service.path("/reports/:" + NON_EXISTENT_REPORT_ID)
+					.request(MediaType.APPLICATION_XML).put(entity, Response.class);
 			System.out.println(response.getStatus());
 			assertEquals(400, response.getStatus());
 		}
